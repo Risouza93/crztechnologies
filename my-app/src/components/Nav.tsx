@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useMemo, JSX } from "react";
+import { useState, useEffect, useCallback, useMemo } from "react";
 import clsx from "clsx";
 import type { NavLink, NavProps } from "../types/index";
 
@@ -21,7 +21,7 @@ const OBSERVER_OPTIONS: IntersectionObserverInit = {
 /* ─────────────────────────────────────────────────────────────────
    COMPONENT
 ───────────────────────────────────────────────────────────────── */
-export default function Nav({ scrollTo }: NavProps): JSX.Element {
+export default function Nav({ scrollTo }: NavProps) {
   const [active, setActive] = useState<string>(NAV_LINKS[0].id);
 
   // ── Active section via IntersectionObserver ──────────────────────

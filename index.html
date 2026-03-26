@@ -1,164 +1,121 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-<head>
-  <meta charset="UTF-8">
-  <title>Richard Feitosa | AI Project Architect</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
-</head>
+<html lang="pt-BR" dir="ltr">
+  <head>
+    <!-- ─── CHARSET & VIEWPORT ────────────────────────────────────── -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 
-<body>
+    <!-- ─── PRIMARY META ─────────────────────────────────────────── -->
+    <title>Richard Feitosa | AI-Driven Project Architect</title>
+    <meta
+      name="description"
+      content="Automação, IA e integrações que reduzem custos e escalam operações. Transformo processos em resultados mensuráveis."
+    />
+    <meta name="author" content="Richard Feitosa" />
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    <meta name="theme-color" content="#020617" />
+    <meta name="color-scheme" content="dark" />
 
-<!-- NAVBAR -->
-<nav>
-  <a href="#sobre">Sobre</a>
-  <a href="#experiencia">Experiência</a>
-  <a href="#projetos">Projetos</a>
-  <a href="#contato">Contato</a>
-</nav>
+    <!-- ─── CANONICAL ────────────────────────────────────────────── -->
+    <link rel="canonical" href="https://crztechnologies.com" />
 
-<!-- HERO -->
-<header>
-  <div class="container">
+    <!-- ─── OPEN GRAPH ───────────────────────────────────────────── -->
+    <meta property="og:site_name" content="Richard Feitosa" />
+    <meta property="og:title" content="Richard Feitosa | AI-Driven Project Architect" />
+    <meta property="og:description" content="Automação, IA e integrações que escalam negócios com eficiência e ROI mensurável." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://crztechnologies.com" />
+    <meta property="og:image" content="https://crztechnologies.com/preview.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Richard Feitosa – AI-Driven Project Architect" />
+    <meta property="og:locale" content="pt_BR" />
 
-    <img src="pictures/perfil.jpeg" alt="Minha foto">
+    <!-- ─── TWITTER / X ──────────────────────────────────────────── -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Richard Feitosa | AI-Driven Project Architect" />
+    <meta name="twitter:description" content="Automação, IA e integrações para escalar operações com inteligência." />
+    <meta name="twitter:image" content="https://crztechnologies.com/preview.png" />
+    <meta name="twitter:image:alt" content="Richard Feitosa – AI-Driven Project Architect" />
 
-    <h1>Richard Feitosa</h1>
+    <!-- ─── FAVICON & PWA ────────────────────────────────────────── -->
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.webmanifest" />
 
-    <p>
-      AI-Driven Project Architect | Automação & IA Generativa |
-      40% ↓ Tempo de Processos | Integrações via APIs | SQL/PostgreSQL
-    </p>
+    <!-- ─── PRECONNECT ───────────────────────────────────────────── -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-    <p>
-      Transformando processos complexos em eficiência mensurável com Automação + IA.
-    </p>
+    <!-- ─── FONT ─────────────────────────────────────────────────── -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap"
+    />
 
-    <button id="btnContato" class="cta-button">
-      📩 Falar comigo
-    </button>
+    <!-- ─── CRITICAL CSS (previne FOUC antes do React montar) ─────── -->
+    <style>
+      *, *::before, *::after { box-sizing: border-box; }
+      html, body, #root { min-height: 100%; }
+      body {
+        margin: 0;
+        background-color: #020617;
+        font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont,
+          'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        color: #e2e8f0;
+      }
+    </style>
 
-  </div>
-</header>
+    <!-- ─── APP CSS ──────────────────────────────────────────────── -->
+    <link rel="stylesheet" href="style.css" />
 
-<!-- RESULTADOS -->
-<section>
-  <h2>📊 Resultados reais</h2>
+    <!-- ─── STRUCTURED DATA ──────────────────────────────────────── -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Richard Feitosa",
+        "jobTitle": "AI-Driven Project Architect",
+        "url": "https://crztechnologies.com",
+        "image": "https://crztechnologies.com/preview.png",
+        "description": "Especialista em automação, IA generativa e integrações que reduzem custos e escalam operações.",
+        "worksFor": {
+          "@type": "Organization",
+          "name": "Grupo MOVE3"
+        },
+        "sameAs": [
+          "https://www.linkedin.com/in/richard-feitosa"
+        ]
+      }
+    </script>
+  </head>
 
-  <ul>
-    <li><strong>40%</strong> menos tempo em processos operacionais</li>
-    <li><strong>35%</strong> menos retrabalho</li>
-    <li>Integrações com <strong>DHL, UPS, Correos</strong></li>
-    <li>Projetos SaaS com operação internacional</li>
-  </ul>
-</section>
+  <body>
+    <!-- ─── REACT ROOT ────────────────────────────────────────────── -->
+    <div id="root"></div>
 
-<!-- PROBLEMA -->
-<section>
-  <h2>⚠️ O problema que está custando dinheiro</h2>
-
-  <p>
-    Processos manuais, sistemas desconectados e decisões sem dados claros
-    fazem empresas perderem dinheiro todos os dias.
-  </p>
-
-  <p>
-    Isso gera retrabalho, atraso e crescimento limitado.
-  </p>
-</section>
-
-<!-- SOLUÇÃO -->
-<section id="sobre">
-  <h2>🧠 Como eu resolvo isso</h2>
-
-  <p>
-    Eu conecto tecnologia, processos e pessoas através de automação e IA,
-    transformando operações em sistemas eficientes, escaláveis e mensuráveis.
-  </p>
-
-  <p>
-    Foco em ROI real, adoção prática e impacto direto no negócio.
-  </p>
-</section>
-
-<!-- EXPERIÊNCIA -->
-<section id="experiencia">
-  <h2>💼 Experiência</h2>
-
-  <h3>Grupo MOVE3 — Analista de Projetos</h3>
-
-  <ul>
-    <li>Automação com redução de até 40% no tempo de análise</li>
-    <li>Integrações com DHL, UPS e Correos</li>
-    <li>Atuação como Product Owner em projetos SaaS</li>
-    <li>Entrega do MegaSorter Damon</li>
-  </ul>
-</section>
-
-<!-- PROJETOS -->
-<section id="projetos">
-  <h2>🚀 Projetos</h2>
-
-  <ul>
-    <li><strong>MOOVE Portugal</strong> — SaaS internacional</li>
-    <li><strong>LEVOO</strong> — Plataforma logística</li>
-    <li><strong>Ship From Store</strong> — ERP FOCCO</li>
-  </ul>
-</section>
-
-<!-- DIFERENCIAIS -->
-<section>
-  <h2>🔥 Diferenciais</h2>
-
-  <ul>
-    <li>Visão estratégica + execução técnica</li>
-    <li>Foco em resultado mensurável</li>
-    <li>Integração entre negócio e tecnologia</li>
-    <li>IA aplicada de forma prática</li>
-  </ul>
-</section>
-
-<!-- CTA FINAL -->
-<section>
-  <h2>📈 Quer escalar sua operação sem aumentar custo?</h2>
-
-  <p>
-    Vamos estruturar automação e IA na sua empresa de forma prática e com ROI.
-  </p>
-
-  <button id="btnContato2" class="cta-button">
-    📩 Falar comigo agora
-  </button>
-</section>
-
-<!-- CONTATO -->
-<section id="contato">
-  <h2>📩 Contato</h2>
-
-  <form id="formContato">
-
-    <label>Nome</label>
-    <input type="text" placeholder="Seu nome">
-
-    <label>Email</label>
-    <input type="email" placeholder="Seu email">
-
-    <button type="submit" class="cta-button">
-      🚀 Enviar mensagem
-    </button>
-
-    <p id="mensagemStatus"></p>
-
-  </form>
-</section>
-
-<footer>
-  <p>© 2026 Richard Feitosa</p>
-</footer>
-
-<script src="script.js"></script>
-
-<div class="cursor"></div>
-
-</body>
+    <!-- ─── NO-JS FALLBACK ───────────────────────────────────────── -->
+    <noscript>
+      <style>
+        .noscript-msg {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          min-height: 100vh;
+          background: #020617;
+          color: #e2e8f0;
+          font-family: Inter, system-ui, sans-serif;
+          font-size: 1rem;
+          text-align: center;
+          padding: 2rem;
+        }
+      </style>
+      <div class="noscript-msg">
+        <p>Por favor, habilite o JavaScript no seu navegador para acessar esta experiência.</p>
+      </div>
+    </noscript>
+  </body>
 </html>
