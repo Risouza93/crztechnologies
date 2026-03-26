@@ -1,2 +1,2 @@
 # crztechnologies
-Do ZERO AO GESTOR DE PROJETOS
+Gestão de Projetos com Foco em Tecnologia
