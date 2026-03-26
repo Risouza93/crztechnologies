@@ -146,6 +146,20 @@ section.show {
   transform: translateY(0);
 }
 
+#mensagemStatus {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.sucesso {
+  color: #22c55e;
+}
+
+.erro {
+  color: #ef4444;
+}
+
+
 /* LISTA */
 ul {
   padding-left: 20px;
@@ -172,6 +186,15 @@ button {
 
 button:active {
   transform: scale(0.95);
+}
+
+button.loading {
+  background-color: #94a3b8;
+  cursor: not-allowed;
+}
+
+#mensagemStatus {
+  transition: 0.3s;
 }
 
 /* INPUT */
