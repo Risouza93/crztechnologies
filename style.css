@@ -140,25 +140,27 @@ ul {
   padding-left: 20px;
 }
 
-/* BOTÃO */
-button {
-  background-color: #38bdf8;
-  border: none;
-  padding: 10px 20px;
-  color: #020617;
+/* BOTÕES DE CALL TO ACTION */
+.cta-button, button.cta-button {
+  display: inline-block;
+  padding: 12px 28px;
+  background: linear-gradient(90deg, #0ea5e9, #38bdf8);
+  color: #fff;
   font-weight: bold;
-  border-radius: 6px;
+  text-decoration: none;
+  border-radius: 30px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
   cursor: pointer;
-}
-
-button:hover {
-  background-color: #0ea5e9;
-}
-
-button {
+  transition: all 0.3s ease;
+  font-size: 16px;
   margin-top: 15px;
 }
 
+.cta-button:hover, button.cta-button:hover {
+  background: linear-gradient(90deg, #38bdf8, #0ea5e9);
+  transform: scale(1.05);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.5);
+}
 /* INPUT */
 input {
   width: 100%;
