@@ -151,6 +151,10 @@ section.show {
   font-weight: bold;
 }
 
+#mensagemStatus {
+  transition: 0.3s;
+}
+
 .sucesso {
   color: #22c55e;
 }
@@ -191,10 +195,6 @@ button:active {
 button.loading {
   background-color: #94a3b8;
   cursor: not-allowed;
-}
-
-#mensagemStatus {
-  transition: 0.3s;
 }
 
 /* INPUT */
@@ -256,4 +256,3 @@ img {
   }
 
 }
-
