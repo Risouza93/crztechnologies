@@ -140,27 +140,31 @@ ul {
   padding-left: 20px;
 }
 
-/* BOTÕES DE CALL TO ACTION */
+/* BOTÕES PRINCIPAIS */
 .cta-button, button.cta-button {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px; /* espaço entre ícone e texto */
   padding: 12px 28px;
-  background: linear-gradient(90deg, #0ea5e9, #38bdf8);
-  color: #fff;
+  background-color: #38bdf8; /* azul destaque */
+  color: #0f172a; /* texto escuro para contraste */
   font-weight: bold;
-  text-decoration: none;
-  border-radius: 30px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
-  cursor: pointer;
-  transition: all 0.3s ease;
   font-size: 16px;
-  margin-top: 15px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  transition: all 0.3s ease;
 }
 
 .cta-button:hover, button.cta-button:hover {
-  background: linear-gradient(90deg, #38bdf8, #0ea5e9);
-  transform: scale(1.05);
-  box-shadow: 0 6px 18px rgba(0,0,0,0.5);
+  background-color: #0ea5e9; /* azul mais intenso no hover */
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.5);
 }
+
 /* INPUT */
 input {
   width: 100%;
