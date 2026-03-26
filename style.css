@@ -135,24 +135,12 @@ section {
   border-left: 4px solid #38bdf8;
 }
 
-section {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: 0.6s;
-}
-
-section.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-
 /* LISTA */
 ul {
   padding-left: 20px;
 }
 
-/* BOTÕES */
+/* BOTÃO */
 button {
   background-color: #38bdf8;
   border: none;
@@ -169,10 +157,6 @@ button:hover {
 
 button {
   margin-top: 15px;
-}
-
-button:active {
-  transform: scale(0.95);
 }
 
 /* INPUT */
@@ -192,7 +176,7 @@ footer {
   margin-top: 20px;
 }
 
-/* RESPONSIVIDADE */
+/* RESPONSIVO */
 @media (max-width: 600px) {
 
   nav {
