@@ -225,3 +225,23 @@ img {
 
 }
 
+/* MENSAGEM DE STATUS */
+
+#mensagemStatus {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.sucesso {
+  color: #22c55e;
+}
+
+.erro {
+  color: #ef4444;
+}
+
+/* estado loading */
+.cta-button.loading {
+  background-color: #94a3b8;
+  cursor: not-allowed;
+}
