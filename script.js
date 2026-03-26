@@ -114,3 +114,33 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 });
+
+  // ==============================
+  // 💡 CURSOR PERSONALIZADO
+  // ==============================
+const cursor = document.querySelector(".cursor");
+
+document.addEventListener("mousemove", (e) => {
+  cursor.style.left = e.clientX + "px";
+  cursor.style.top = e.clientY + "px";
+});
+
+  // ==============================
+  // 💡 EFEITO DE SCROLL
+  // ==============================
+window.addEventListener("scroll", () => {
+  const header = document.querySelector("header");
+  const scroll = window.scrollY;
+
+  header.style.transform = `translateY(${scroll * 0.3}px)`;
+});
+
+  // ==============================
+  // 💡 EFEITO DE MOUSE
+  // ==============================
+document.addEventListener("mousemove", (e) => {
+  const glow = document.body;
+
+  glow.style.setProperty("--x", e.clientX + "px");
+  glow.style.setProperty("--y", e.clientY + "px");
+});

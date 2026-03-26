@@ -13,6 +13,18 @@ body {
   line-height: 1.6;
 }
 
+body::before {
+  content: "";
+  position: fixed;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(56,189,248,0.15), transparent);
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  transition: 0.2s;
+}
+
 /* ===== NAVBAR ===== */
 nav {
   position: sticky;
@@ -79,6 +91,10 @@ header p {
   max-width: 700px;
   margin-left: auto;
   margin-right: auto;
+}
+
+header {
+  background-attachment: fixed;
 }
 
 /* ===== BOTÕES ===== */
@@ -202,4 +218,17 @@ section.show {
     padding: 25px;
   }
 
+}
+
+/* ===== CURSOR PERSONALIZADO ===== */
+.cursor {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #38bdf8;
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  transition: 0.1s ease;
+  z-index: 9999;
 }
