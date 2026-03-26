@@ -1,0 +1,23 @@
+{
+  "name": "crztechnologies",
+  "version": "1.0.0",
+  "description": "Gestão de Projetos com Foco em Tecnologia",
+  "main": "script.js",
+"scripts": {
+  "start": "react-scripts start",
+  "build": "react-scripts build",
+  "test": "react-scripts test"
+},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Risouza93/crztechnologies.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Risouza93/crztechnologies/issues"
+  },
+  "homepage": "https://github.com/Risouza93/crztechnologies#readme"
+}
