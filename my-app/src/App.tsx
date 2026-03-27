@@ -1,4 +1,4 @@
-import emailjs from "@emailjs/browser";
+﻿import emailjs from "@emailjs/browser";
 import "./style.css";
 import Header from "./components/Header";
 import Nav from "./components/Nav";
@@ -20,13 +20,7 @@ export default function App() {
       <Nav scrollTo={scrollTo} activeId={activeId} />
       <main>
         <div className="container">
-          <Sections
-            form={form}
-            status={status}
-            loading={loading}
-            handleChange={handleChange}
-            handleSubmit={handleSubmit}
-          />
+          <Sections form={form} status={status} loading={loading} handleChange={handleChange} handleSubmit={handleSubmit} />
         </div>
       </main>
       <Footer />
