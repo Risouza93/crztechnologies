@@ -3,21 +3,18 @@
   "version": "1.0.0",
   "private": true,
   "description": "Site profissional - Richard Feitosa | AI Project Architect",
-
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
+    "clsx": "^2.1.0",
+    "framer-motion": "^11.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-scripts": "5.0.1",
-
-    "framer-motion": "^11.0.0",
-    "clsx": "^2.1.0"
+    "react-scripts": "5.0.1"
   },
-
   "devDependencies": {
     "eslint": "^8.57.0",
     "prettier": "^3.2.5"
   },
-
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -25,7 +22,6 @@
     "lint": "eslint src/**/*.{js,jsx}",
     "format": "prettier --write \"src/**/*.{js,jsx,css}\""
   },
-
   "browserslist": {
     "production": [
       ">0.2%",
