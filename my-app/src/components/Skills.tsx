@@ -1,27 +1,42 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef } from 'react';
 
-interface SkillItem { name: string; level: number; }
-interface SkillCategory { category: string; items: SkillItem[]; }
+interface SkillItem {
+  name: string;
+  level: number;
+}
+interface SkillCategory {
+  category: string;
+  items: SkillItem[];
+}
 
 const skills: SkillCategory[] = [
-  { category: "Automação & IA", items: [
-    { name: "n8n / Make (Integromat)", level: 100 },
-    { name: "LangChain / GPT APIs", level: 100 },
-    { name: "Power Automate", level: 100 },
-    { name: "Python (automação)", level: 100 },
-  ]},
-  { category: "Integrações & APIs", items: [
-    { name: "REST APIs", level: 100 },
-    { name: "ERPs (TOTVS, FOCCO, Bling)", level: 100 },
-    { name: "TMS / WMS", level: 100 },
-    { name: "Node.js", level: 100 },
-  ]},
-  { category: "Frontend & Ferramentas", items: [
-    { name: "React / TypeScript", level: 100 },
-    { name: "Power BI", level: 100 },
-    { name: "Git / Vercel / CI-CD", level: 100 },
-    { name: "UX / UI", level: 100 },
-  ]},
+  {
+    category: 'Automação & IA',
+    items: [
+      { name: 'n8n / Make (Integromat)', level: 100 },
+      { name: 'LangChain / GPT APIs', level: 100 },
+      { name: 'Power Automate', level: 100 },
+      { name: 'Python (automação)', level: 100 },
+    ],
+  },
+  {
+    category: 'Integrações & APIs',
+    items: [
+      { name: 'REST APIs', level: 100 },
+      { name: 'ERPs (TOTVS, FOCCO, Bling)', level: 100 },
+      { name: 'TMS / WMS', level: 100 },
+      { name: 'Node.js', level: 100 },
+    ],
+  },
+  {
+    category: 'Frontend & Ferramentas',
+    items: [
+      { name: 'React / TypeScript', level: 100 },
+      { name: 'Power BI', level: 100 },
+      { name: 'Git / Vercel / CI-CD', level: 100 },
+      { name: 'UX / UI', level: 100 },
+    ],
+  },
 ];
 
 export default function Skills() {
@@ -29,12 +44,13 @@ export default function Skills() {
 
   useEffect(() => {
     const observer = new IntersectionObserver(
-      (entries) => entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          const el = entry.target as HTMLDivElement;
-          el.style.width = el.dataset.level + "%";
-        }
-      }),
+      (entries) =>
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const el = entry.target as HTMLDivElement;
+            el.style.width = el.dataset.level + '%';
+          }
+        }),
       { threshold: 0.3 }
     );
     barsRef.current.forEach((bar) => bar && observer.observe(bar));
@@ -58,8 +74,10 @@ export default function Skills() {
                   <div
                     className="skill-bar"
                     data-level={skill.level}
-                    ref={(el) => { if (el) barsRef.current.push(el); }}
-                    style={{ width: "0%" }}
+                    ref={(el) => {
+                      if (el) barsRef.current.push(el);
+                    }}
+                    style={{ width: '0%' }}
                   />
                 </div>
               </div>

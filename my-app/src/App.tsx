@@ -1,15 +1,15 @@
-import { useEffect, useState, useCallback } from "react";
-import emailjs from "@emailjs/browser"; // ✅ pacote atualizado para TS
-import { ThemeProvider } from "./context/ThemeContext";
-import "./App.css";
-import "./style.css";
-import Header from "./components/Header";
-import Nav from "./components/Nav";
-import Sections from "./components/Sections";
-import ScrollToTop from "./components/ScrollToTop";
-import CustomCursor from "./components/CustomCursor";
-import Toast from "./components/Toast";
-import TypebotBubble from "./components/TypebotBubble";
+import { useEffect, useState, useCallback } from 'react';
+import emailjs from '@emailjs/browser'; // ✅ pacote atualizado para TS
+import { ThemeProvider } from './context/ThemeContext';
+import './App.css';
+import './style.css';
+import Header from './components/Header';
+import Nav from './components/Nav';
+import Sections from './components/Sections';
+import ScrollToTop from './components/ScrollToTop';
+import CustomCursor from './components/CustomCursor';
+import Toast from './components/Toast';
+import TypebotBubble from './components/TypebotBubble';
 
 interface ToastState {
   message: string;
@@ -23,27 +23,27 @@ interface FormState {
 
 function App() {
   const [form, setForm] = useState<FormState>({
-    nome: "",
-    email: "",
-    mensagem: "",
+    nome: '',
+    email: '',
+    mensagem: '',
   });
-  const [toast, setToast] = useState<ToastState>({ message: "", type: "" });
+  const [toast, setToast] = useState<ToastState>({ message: '', type: '' });
   const [loading, setLoading] = useState<boolean>(false);
 
   const scrollTo = useCallback((id: string) => {
-    document.querySelector(id)?.scrollIntoView({ behavior: "smooth" });
+    document.querySelector(id)?.scrollIntoView({ behavior: 'smooth' });
   }, []);
 
-    const scrollContato = useCallback(() => {
-    document.querySelector("#contato")?.scrollIntoView({ behavior: "smooth" });
+  const scrollContato = useCallback(() => {
+    document.querySelector('#contato')?.scrollIntoView({ behavior: 'smooth' });
   }, []);
 
   useEffect(() => {
-    const sections = document.querySelectorAll("section");
+    const sections = document.querySelectorAll('section');
     const observer = new IntersectionObserver(
       (entries) =>
         entries.forEach(
-          (e) => e.isIntersecting && e.target.classList.add("show")
+          (e) => e.isIntersecting && e.target.classList.add('show')
         ),
       { threshold: 0.15 }
     );
@@ -62,7 +62,7 @@ function App() {
     e.preventDefault();
 
     if (!form.nome || !form.email) {
-      setToast({ message: "⚠️ Preencha todos os campos!", type: "erro" });
+      setToast({ message: '⚠️ Preencha todos os campos!', type: 'erro' });
       return;
     }
 
@@ -82,17 +82,17 @@ function App() {
       .then(
         () => {
           setToast({
-            message: "✅ Mensagem enviada com sucesso!",
-            type: "sucesso",
+            message: '✅ Mensagem enviada com sucesso!',
+            type: 'sucesso',
           });
-          setForm({ nome: "", email: "", mensagem: "" });
+          setForm({ nome: '', email: '', mensagem: '' });
           setLoading(false);
         },
         (error) => {
-          console.error("Erro EmailJS:", error);
+          console.error('Erro EmailJS:', error);
           setToast({
-            message: "⚠️ Erro ao enviar: " + error.text,
-            type: "erro",
+            message: '⚠️ Erro ao enviar: ' + error.text,
+            type: 'erro',
           });
           setLoading(false);
         }
@@ -106,7 +106,7 @@ function App() {
       <Toast
         message={toast.message}
         type={toast.type}
-        onClose={() => setToast({ message: "", type: "" })}
+        onClose={() => setToast({ message: '', type: '' })}
       />
       <Header scrollContato={scrollContato} />
       <Nav scrollTo={scrollTo} />
