@@ -1,30 +1,12 @@
 // src/components/TypebotBubble.tsx - TYPESCRIPT 0 WARNINGS
-import { useState, MouseEvent } from 'react';
-
-interface ButtonStyle {
-  position: string;
-  bottom: string;
-  right: string;
-  width: string;
-  height: string;
-  borderRadius: string;
-  border: string;
-  fontSize: string;
-  color: string;
-  zIndex: number;
-  cursor: string;
-  transition: string;
-  background: string;
-  transform: string;
-  boxShadow: string;
-}
+import { useState, MouseEvent, CSSProperties } from 'react';
 
 const TypebotBubble: React.FC = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [isHovered, setIsHovered] = useState<boolean>(false);
   const typebotUrl = 'https://typebot.co/user-onboarding-rje58ah';
 
-  const getButtonStyle = (hovered: boolean): ButtonStyle => ({
+  const getButtonStyle = (hovered: boolean): CSSProperties => ({
     position: 'fixed',
     bottom: '90px',
     right: '32px',

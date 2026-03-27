@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import emailjs from '@emailjs/browser'; // ✅ pacote atualizado para TS
 import { ThemeProvider } from './context/ThemeContext';
 import './App.css';
