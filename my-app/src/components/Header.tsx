@@ -106,7 +106,9 @@ const Header = memo(function Header({ onScrollContato }: HeaderProps) {
           }}
         >
           AI-Driven Project Architect · Automação &amp; IA Generativa ·
-          Redução de até 40% no tempo de processos · Integrações via APIs
+          Redução de até 40% no tempo de processos 
+          <br />
+          · Integrações via APIs
         </motion.p>
 
         <motion.div variants={itemVariant}>
