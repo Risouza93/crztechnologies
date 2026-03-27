@@ -1,29 +1,77 @@
-import emailjs from "@emailjs/browser";
+import { useEffect, useState, useCallback } from "react";
+import { ThemeProvider } from "./context/ThemeContext";
+import "./App.css";
 import "./style.css";
 import Header from "./components/Header";
 import Nav from "./components/Nav";
 import Sections from "./components/Sections";
-import Footer from "./components/Footer";
-import { useForm } from "./hooks/useForm";
-import { useScrollSpy } from "./hooks/useScrollSpy";
+import ScrollToTop from "./components/ScrollToTop";
+import CustomCursor from "./components/CustomCursor";
+import Toast from "./components/Toast";
 
-const PUBLIC_KEY = process.env.REACT_APP_EMAILJS_PUBLIC_KEY;
-if (PUBLIC_KEY) emailjs.init(PUBLIC_KEY);
+interface ToastState { message: string; type: string; }
+interface FormState { nome: string; email: string; mensagem: string; }
 
-export default function App() {
-  const { form, status, loading, handleChange, handleSubmit } = useForm();
-  const { scrollTo, scrollContato, activeId } = useScrollSpy();
+function App() {
+  const [form, setForm] = useState<FormState>({ nome: "", email: "", mensagem: "" });
+  const [toast, setToast] = useState<ToastState>({ message: "", type: "" });
+  const [loading, setLoading] = useState<boolean>(false);
+
+  const scrollTo = useCallback((id: string) => {
+    document.querySelector(id)?.scrollIntoView({ behavior: "smooth" });
+  }, []);
+
+  const scrollContato = useCallback(() => scrollTo("#contato"), [scrollTo]);
+
+  useEffect(() => {
+    const sections = document.querySelectorAll("section");
+    const observer = new IntersectionObserver(
+      (entries) => entries.forEach((e) => e.isIntersecting && e.target.classList.add("show")),
+      { threshold: 0.15 }
+    );
+    sections.forEach((sec) => observer.observe(sec));
+    return () => observer.disconnect();
+  }, []);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setForm((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (!form.nome || !form.email) {
+      setToast({ message: "⚠️ Preencha todos os campos!", type: "erro" });
+      return;
+    }
+    setLoading(true);
+    setTimeout(() => {
+      setToast({ message: "✅ Mensagem enviada com sucesso!", type: "sucesso" });
+      setForm({ nome: "", email: "", mensagem: "" });
+      setLoading(false);
+    }, 2000);
+  };
 
   return (
-    <>
-      <Header onScrollContato={scrollContato} />
-      <Nav scrollTo={scrollTo} activeId={activeId} />
-      <main>
-        <div className="container">
-          <Sections form={form} status={status} loading={loading} handleChange={handleChange} handleSubmit={handleSubmit} />
-        </div>
-      </main>
-      <Footer />
-    </>
+    <ThemeProvider>
+      <CustomCursor />
+      <ScrollToTop />
+      <Toast
+        message={toast.message}
+        type={toast.type}
+        onClose={() => setToast({ message: "", type: "" })}
+      />
+      <Header scrollContato={scrollContato} />
+      <Nav scrollTo={scrollTo} />
+      <Sections
+        form={form}
+        status={toast}
+        loading={loading}
+        handleChange={handleChange}
+        handleSubmit={handleSubmit}
+      />
+    </ThemeProvider>
   );
 }
+
+export default App;

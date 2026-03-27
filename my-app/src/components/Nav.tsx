@@ -1,32 +1,73 @@
-import { memo } from "react";
-import type { NavProps } from "../types";
+import { useState, useEffect } from "react";
+import clsx from "clsx";
+import ThemeToggle from "./ThemeToggle";
 
-const NAV_ITEMS = [
-  { id: "sobre",    label: "Sobre"    },
-  { id: "projetos", label: "Projetos" },
-  { id: "stack",    label: "Stack"    },
-  { id: "contato",  label: "Contato"  },
-] as const;
+interface NavProps { scrollTo: (id: string) => void; }
 
-const Nav = memo(function Nav({ scrollTo, activeId }: NavProps) {
+export default function Nav({ scrollTo }: NavProps) {
+  const [active, setActive] = useState<string>("#sobre");
+  const [menuOpen, setMenuOpen] = useState<boolean>(false);
+
+  useEffect(() => {
+    const sections = document.querySelectorAll("section");
+    const observer = new IntersectionObserver(
+      (entries) => entries.forEach((e) => e.isIntersecting && setActive(`#${e.target.id}`)),
+      { threshold: 0.4 }
+    );
+    sections.forEach((sec) => observer.observe(sec));
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const onResize = () => { if (window.innerWidth > 768) setMenuOpen(false); };
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
+
+  const links = [
+    { id: "#sobre",    label: "Sobre" },
+    { id: "#projetos", label: "Projetos" },
+    { id: "#stack",    label: "Stack" },
+    { id: "#skills",   label: "Skills" },
+    { id: "#contato",  label: "Contato" },
+  ];
+
+  const handleNav = (id: string) => { scrollTo(id); setMenuOpen(false); };
+
   return (
-    <nav aria-label="Navegacao principal">
+    <nav>
       <div className="nav-container">
-        {NAV_ITEMS.map(({ id, label }) => (
+        <div className="nav-links">
+          {links.map((link) => (
+            <button
+              key={link.id}
+              onClick={() => handleNav(link.id)}
+              className={clsx("nav-link", active === link.id && "active")}
+            >
+              {link.label}
+            </button>
+          ))}
+        </div>
+        <ThemeToggle />
+        <button
+          className={clsx("hamburger", menuOpen && "hamburger--open")}
+          onClick={() => setMenuOpen((prev) => !prev)}
+          aria-label="Menu"
+        >
+          <span /><span /><span />
+        </button>
+      </div>
+      <div className={clsx("mobile-menu", menuOpen && "mobile-menu--open")}>
+        {links.map((link) => (
           <button
-            key={id}
-            type="button"
-            className={`nav-link${activeId === id ? " active" : ""}`}
-            onClick={() => scrollTo(id)}
-            aria-label={`Ir para secao ${label}`}
-            aria-current={activeId === id ? "true" : undefined}
+            key={link.id}
+            onClick={() => handleNav(link.id)}
+            className={clsx("mobile-link", active === link.id && "active")}
           >
-            {label}
+            {link.label}
           </button>
         ))}
       </div>
     </nav>
   );
-});
-
-export default Nav;
+}
