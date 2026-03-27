@@ -1,11 +1,8 @@
-import { useMemo } from "react";
+import { memo, useMemo } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import type { Variants } from "framer-motion";
 import type { HeaderProps } from "../types";
 
-/* ─────────────────────────────────────────────────────────────────
-   CONSTANTS
-───────────────────────────────────────────────────────────────── */
 const STATS: string[] = [
   "⚡ 40% menos tempo operacional",
   "🔁 35% menos retrabalho",
@@ -40,18 +37,12 @@ const VARIANTS: Record<string, Variants> = {
   },
 };
 
-/* ─────────────────────────────────────────────────────────────────
-   COMPONENT
-───────────────────────────────────────────────────────────────── */
-export default function Header({ onScrollContato }: HeaderProps) {
-
-  // ── Respeita preferência de movimento do sistema (WCAG 2.1) ─────
+const Header = memo(function Header({ onScrollContato }: HeaderProps) {
   const prefersReduced = useReducedMotion();
 
   const itemVariant      = prefersReduced ? VARIANTS.reduced : VARIANTS.item;
   const containerVariant = prefersReduced ? VARIANTS.reduced : VARIANTS.container;
 
-  // ── Stats memoizadas ─────────────────────────────────────────────
   const renderedStats = useMemo(
     () =>
       STATS.map((stat: string) => (
@@ -62,7 +53,6 @@ export default function Header({ onScrollContato }: HeaderProps) {
     [itemVariant]
   );
 
-  // ── Render ───────────────────────────────────────────────────────
   return (
     <header>
       <motion.div
@@ -71,7 +61,6 @@ export default function Header({ onScrollContato }: HeaderProps) {
         initial="hidden"
         animate="show"
       >
-        {/* Avatar */}
         <motion.div variants={itemVariant}>
           <img
             src="/pictures/perfil.jpeg"
@@ -88,18 +77,17 @@ export default function Header({ onScrollContato }: HeaderProps) {
           />
         </motion.div>
 
-        {/* Headline */}
         <motion.h1
           variants={itemVariant}
           style={{
-            fontSize:              "clamp(2rem, 5vw, 3.25rem)",
-            fontWeight:            700,
-            lineHeight:            1.15,
-            marginBottom:          "1rem",
-            background:            "linear-gradient(135deg, #38bdf8, #22c55e)",
-            WebkitBackgroundClip:  "text",
-            WebkitTextFillColor:   "transparent",
-            backgroundClip:        "text",
+            fontSize:             "clamp(2rem, 5vw, 3.25rem)",
+            fontWeight:           700,
+            lineHeight:           1.15,
+            marginBottom:         "1rem",
+            background:           "linear-gradient(135deg, #38bdf8, #22c55e)",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor:  "transparent",
+            backgroundClip:       "text",
           }}
         >
           Transformo caos operacional em
@@ -107,22 +95,20 @@ export default function Header({ onScrollContato }: HeaderProps) {
           eficiência com IA
         </motion.h1>
 
-        {/* Subheadline */}
         <motion.p
           variants={itemVariant}
           style={{
-            fontSize:     "clamp(0.9rem, 2vw, 1.1rem)",
-            color:        "#94a3b8",
-            maxWidth:     "540px",
-            margin:       "0 auto 2rem",
-            lineHeight:   1.7,
+            fontSize:   "clamp(0.9rem, 2vw, 1.1rem)",
+            color:      "#94a3b8",
+            maxWidth:   "540px",
+            margin:     "0 auto 2rem",
+            lineHeight: 1.7,
           }}
         >
           AI-Driven Project Architect · Automação &amp; IA Generativa ·
           Redução de até 40% no tempo de processos · Integrações via APIs
         </motion.p>
 
-        {/* CTA */}
         <motion.div variants={itemVariant}>
           <button
             type="button"
@@ -135,7 +121,6 @@ export default function Header({ onScrollContato }: HeaderProps) {
           </button>
         </motion.div>
 
-        {/* Stats */}
         <motion.div
           className="hero-stats"
           variants={containerVariant}
@@ -145,8 +130,9 @@ export default function Header({ onScrollContato }: HeaderProps) {
         >
           {renderedStats}
         </motion.div>
-
       </motion.div>
     </header>
   );
-}
+});
+
+export default Header;

@@ -1,87 +1,31 @@
-import { useState, useEffect, useCallback, useMemo } from "react";
-import clsx from "clsx";
-import type { NavLink, NavProps } from "../types/index";
+import { memo } from "react";
+import type { NavProps } from "../types";
 
+const NAV_ITEMS = [
+  { id: "sobre",    label: "Sobre"    },
+  { id: "projetos", label: "Projetos" },
+  { id: "stack",    label: "Stack"    },
+  { id: "contato",  label: "Contato"  },
+] as const;
 
-/* ─────────────────────────────────────────────────────────────────
-   CONSTANTS
-───────────────────────────────────────────────────────────────── */
-const NAV_LINKS: NavLink[] = [
-  { id: "#resultados",  label: "Resultados"  },
-  { id: "#sobre",       label: "Sobre"       },
-  { id: "#experiencia", label: "Experiência" },
-  { id: "#contato",     label: "Contato"     },
-];
-
-const OBSERVER_OPTIONS: IntersectionObserverInit = {
-  threshold:  0.3,
-  rootMargin: "0px 0px -20% 0px",
-};
-
-/* ─────────────────────────────────────────────────────────────────
-   COMPONENT
-───────────────────────────────────────────────────────────────── */
-export default function Nav({ scrollTo }: NavProps) {
-  const [active, setActive] = useState<string>(NAV_LINKS[0].id);
-
-  // ── Active section via IntersectionObserver ──────────────────────
-  useEffect(() => {
-    const sectionEls = NAV_LINKS.map(({ id }) =>
-      document.querySelector<HTMLElement>(id)
-    ).filter((el): el is HTMLElement => el !== null);
-
-    if (sectionEls.length === 0) return;
-
-    const observer = new IntersectionObserver(
-      (entries: IntersectionObserverEntry[]) => {
-        const visible = entries
-          .filter((e) => e.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-
-        if (visible) {
-          setActive(`#${visible.target.id}`);
-        }
-      },
-      OBSERVER_OPTIONS
-    );
-
-    sectionEls.forEach((el) => observer.observe(el));
-
-    return () => observer.disconnect();
-  }, []);
-
-  // ── Click handler ────────────────────────────────────────────────
-  const handleClick = useCallback(
-    (id: string): void => {
-      setActive(id);
-      scrollTo(id);
-    },
-    [scrollTo]
-  );
-
-  // ── Links memoizados ─────────────────────────────────────────────
-  const renderedLinks = useMemo(
-    () =>
-      NAV_LINKS.map(({ id, label }: NavLink) => (
-        <button
-          key={id}
-          type="button"
-          onClick={() => handleClick(id)}
-          className={clsx("nav-link", active === id && "active")}
-          aria-current={active === id ? "true" : undefined}
-        >
-          {label}
-        </button>
-      )),
-    [active, handleClick]
-  );
-
-  // ── Render ───────────────────────────────────────────────────────
+const Nav = memo(function Nav({ scrollTo }: NavProps) {
   return (
     <nav aria-label="Navegação principal">
-      <div className="nav-container" role="list">
-        {renderedLinks}
-      </div>
+      <ul>
+        {NAV_ITEMS.map(({ id, label }) => (
+          <li key={id}>
+            <button
+              type="button"
+              onClick={() => scrollTo(id)}
+              aria-label={`Ir para seção ${label}`}
+            >
+              {label}
+            </button>
+          </li>
+        ))}
+      </ul>
     </nav>
   );
-}
+});
+
+export default Nav;
