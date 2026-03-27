@@ -31,7 +31,7 @@ const skills: SkillCategory[] = [
   {
     category: 'Frontend & Ferramentas',
     items: [
-      { name: 'React / TypeScript', level: 100 },
+      { name: 'React / TypeScript / JavaScript', level: 100 },
       { name: 'Power BI', level: 100 },
       { name: 'Git / Vercel / CI-CD', level: 100 },
       { name: 'UX / UI', level: 100 },

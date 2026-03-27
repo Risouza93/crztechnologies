@@ -1,54 +1,54 @@
-import { memo } from "react";
+import { memo } from 'react';
 
 interface StackItem {
-  nome:  string;
+  nome: string;
   emoji: string;
 }
 
 interface StackGrupo {
   categoria: string;
-  itens:     StackItem[];
+  itens: StackItem[];
 }
 
 const STACK: StackGrupo[] = [
   {
-    categoria: "IA & Automação",
+    categoria: 'IA & Automação',
     itens: [
-      { nome: "ChatGPT / GPT-4o",  emoji: "🤖" },
-      { nome: "LangChain",         emoji: "🔗" },
-      { nome: "Power Automate",    emoji: "⚡" },
-      { nome: "n8n",               emoji: "🔁" },
-      { nome: "Make (Integromat)", emoji: "🛠️" },
+      { nome: 'ChatGPT / GPT-4o', emoji: '🤖' },
+      { nome: 'LangChain', emoji: '🔗' },
+      { nome: 'Power Automate', emoji: '⚡' },
+      { nome: 'n8n', emoji: '🔁' },
+      { nome: 'Make (Integromat)', emoji: '🛠️' },
     ],
   },
   {
-    categoria: "Dados & Backend",
+    categoria: 'Dados & Backend',
     itens: [
-      { nome: "SQL / PostgreSQL", emoji: "🗄️" },
-      { nome: "REST APIs",        emoji: "🔌" },
-      { nome: "Node.js",          emoji: "🟩" },
-      { nome: "Python",           emoji: "🐍" },
-      { nome: "Excel Avançado",   emoji: "📊" },
+      { nome: 'SQL / PostgreSQL', emoji: '🗄️' },
+      { nome: 'REST APIs', emoji: '🔌' },
+      { nome: 'Node.js', emoji: '🟩' },
+      { nome: 'Python', emoji: '🐍' },
+      { nome: 'Excel Avançado', emoji: '📊' },
     ],
   },
   {
-    categoria: "Produto & Gestão",
+    categoria: 'Produto & Gestão',
     itens: [
-      { nome: "Product Owner", emoji: "🎯" },
-      { nome: "Jira / Scrum",  emoji: "📋" },
-      { nome: "Power BI",      emoji: "📈" },
-      { nome: "Microsoft 365", emoji: "☁️" },
-      { nome: "UX / UI",       emoji: "🎨" },
+      { nome: 'Product Owner', emoji: '🎯' },
+      { nome: 'Jira / Scrum', emoji: '📋' },
+      { nome: 'Power BI', emoji: '📈' },
+      { nome: 'Microsoft 365', emoji: '☁️' },
+      { nome: 'UX / UI', emoji: '🎨' },
     ],
   },
   {
-    categoria: "Sistemas & Infra",
+    categoria: 'Sistemas & Infra',
     itens: [
-      { nome: "ERPs (TOTVS, FOCCO, Bling)", emoji: "🏭" },
-      { nome: "TMS / WMS",                  emoji: "📦" },
-      { nome: "React / TypeScript",         emoji: "⚛️" },
-      { nome: "Git / GitHub",               emoji: "🐙" },
-      { nome: "Vercel / CI-CD",             emoji: "🚀" },
+      { nome: 'ERPs (TOTVS, FOCCO, Bling)', emoji: '🏭' },
+      { nome: 'TMS / WMS', emoji: '📦' },
+      { nome: 'React / TypeScript / JavaScript', emoji: '⚛️' },
+      { nome: 'Git / GitHub', emoji: '🐙' },
+      { nome: 'Vercel / CI-CD', emoji: '🚀' },
     ],
   },
 ];
@@ -58,7 +58,8 @@ const Stack = memo(function Stack() {
     <div>
       <h2>Stack</h2>
       <p>
-        Ferramentas que uso para construir, conectar e automatizar — em produção, não em tutorial.
+        Ferramentas que uso para construir, conectar e automatizar — em
+        produção, não em tutorial.
       </p>
       <div className="grid">
         {STACK.map((grupo) => (
