@@ -63,7 +63,7 @@ const Contato = memo(function Contato({
           {loading ? "Enviando…" : "Enviar mensagem"}
         </button>
 
-        {status && (
+        {status && typeof status === "string" && (
           <p
             className={`form-status ${status.includes("sucesso") ? "success" : "error"}`}
             role="alert"
