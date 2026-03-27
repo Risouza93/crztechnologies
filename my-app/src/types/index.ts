@@ -1,4 +1,4 @@
-﻿// FORM
+// FORM
 export interface FormState {
   nome:     string;
   email:    string;
