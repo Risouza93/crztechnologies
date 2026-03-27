@@ -3,22 +3,21 @@ import "./style.css";
 import Header from "./components/Header";
 import Nav from "./components/Nav";
 import Sections from "./components/Sections";
+import Footer from "./components/Footer";
 import { useForm } from "./hooks/useForm";
 import { useScrollSpy } from "./hooks/useScrollSpy";
 
 const PUBLIC_KEY = process.env.REACT_APP_EMAILJS_PUBLIC_KEY;
-if (PUBLIC_KEY) {
-  emailjs.init(PUBLIC_KEY);
-}
+if (PUBLIC_KEY) emailjs.init(PUBLIC_KEY);
 
 export default function App() {
   const { form, status, loading, handleChange, handleSubmit } = useForm();
-  const { scrollTo, scrollContato } = useScrollSpy();
+  const { scrollTo, scrollContato, activeId } = useScrollSpy();
 
   return (
     <>
       <Header onScrollContato={scrollContato} />
-      <Nav scrollTo={scrollTo} />
+      <Nav scrollTo={scrollTo} activeId={activeId} />
       <main>
         <div className="container">
           <Sections
@@ -30,11 +29,7 @@ export default function App() {
           />
         </div>
       </main>
-      <footer>
-        <p>
-          © {new Date().getFullYear()} Richard Feitosa — AI-Driven Project Architect
-        </p>
-      </footer>
+      <Footer />
     </>
   );
 }

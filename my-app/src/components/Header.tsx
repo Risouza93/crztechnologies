@@ -1,6 +1,4 @@
 import { memo, useMemo } from "react";
-import { motion, useReducedMotion } from "framer-motion";
-import type { Variants } from "framer-motion";
 import type { HeaderProps } from "../types";
 
 const STATS: string[] = [
@@ -10,108 +8,62 @@ const STATS: string[] = [
   "🚀 SaaS com operação global",
 ];
 
-const VARIANTS: Record<string, Variants> = {
-  container: {
-    hidden: {},
-    show: {
-      transition: {
-        staggerChildren: 0.12,
-        delayChildren:   0.1,
-      },
-    },
-  },
-  item: {
-    hidden: { opacity: 0, y: 24 },
-    show: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
-    },
-  },
-  reduced: {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: { duration: 0.2 },
-    },
-  },
-};
+const LINKEDIN_URL = "https://www.linkedin.com/in/richard-de-souza-feitosa/";
 
 const Header = memo(function Header({ onScrollContato }: HeaderProps) {
-  const prefersReduced = useReducedMotion();
-
-  const itemVariant      = prefersReduced ? VARIANTS.reduced : VARIANTS.item;
-  const containerVariant = prefersReduced ? VARIANTS.reduced : VARIANTS.container;
-
   const renderedStats = useMemo(
-    () =>
-      STATS.map((stat: string) => (
-        <motion.span key={stat} variants={itemVariant}>
-          {stat}
-        </motion.span>
-      )),
-    [itemVariant]
+    () => STATS.map((stat) => <span key={stat}>{stat}</span>),
+    []
   );
 
   return (
     <header>
-      <motion.div
-        className="container"
-        variants={containerVariant}
-        initial="hidden"
-        animate="show"
-      >
-        <motion.div variants={itemVariant}>
-          <img
-            src="/pictures/perfil.jpeg"
-            alt="Foto de Richard Feitosa"
-            width={196}
-            height={196}
-            style={{
-              borderRadius: "50%",
-              border:       "2px solid rgba(56,189,248,0.3)",
-              objectFit:    "cover",
-              display:      "block",
-              margin:       "0 auto 1.5rem",
-            }}
-          />
-        </motion.div>
-
-        <motion.h1
-          variants={itemVariant}
+      <div className="container">
+        <img
+          src="/pictures/perfil.jpeg"
+          alt="Foto de Richard Feitosa"
+          width={196}
+          height={196}
           style={{
-            fontSize:             "clamp(2rem, 5vw, 3.25rem)",
-            fontWeight:           700,
-            lineHeight:           1.15,
-            marginBottom:         "1rem",
-            background:           "linear-gradient(135deg, #38bdf8, #22c55e)",
+            borderRadius: "50%",
+            border: "2px solid rgba(56,189,248,0.3)",
+            objectFit: "cover",
+            display: "block",
+            margin: "0 auto 1.5rem",
+          }}
+        />
+
+        <h1
+          style={{
+            fontSize: "clamp(2rem, 5vw, 3.25rem)",
+            fontWeight: 700,
+            lineHeight: 1.15,
+            marginBottom: "1rem",
+            background: "linear-gradient(135deg, #38bdf8, #22c55e)",
             WebkitBackgroundClip: "text",
-            WebkitTextFillColor:  "transparent",
-            backgroundClip:       "text",
+            WebkitTextFillColor: "transparent",
+            backgroundClip: "text",
           }}
         >
           Transformo caos operacional em
           <br />
           eficiência com IA
-        </motion.h1>
+        </h1>
 
-        <motion.p
-          variants={itemVariant}
+        <p
           style={{
-            fontSize:   "clamp(0.9rem, 2vw, 1.1rem)",
-            color:      "#94a3b8",
-            maxWidth:   "540px",
-            margin:     "0 auto 2rem",
+            fontSize: "clamp(0.9rem, 2vw, 1.1rem)",
+            color: "#b8c5d6",
+            maxWidth: "540px",
+            margin: "0 auto 2rem",
             lineHeight: 1.7,
           }}
         >
           AI-Driven Project Architect · Automação &amp; IA Generativa ·
-          Redução de até 40% no tempo de processos 
-          <br />
-          · Integrações via APIs
-        </motion.p>
+          Redução de até 40% no tempo de processos · Integrações via APIs
+        </p>
 
-        <motion.div variants={itemVariant}>
+        <div style={{ display: "flex", gap: "1rem", justifyContent: "center", flexWrap: "wrap" }}>
           <button
             type="button"
             className="cta-button"
@@ -121,18 +73,48 @@ const Header = memo(function Header({ onScrollContato }: HeaderProps) {
             <span aria-hidden="true">🚀</span>
             Quero escalar minha operação
           </button>
-        </motion.div>
 
-        <motion.div
-          className="hero-stats"
-          variants={containerVariant}
-          initial="hidden"
-          animate="show"
-          aria-label="Resultados em destaque"
-        >
+          <a
+            href={LINKEDIN_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Ver perfil no LinkedIn"
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "0.5rem",
+              padding: "1rem 2rem",
+              borderRadius: "999px",
+              background: "rgba(15,25,50,0.6)",
+              border: "1px solid rgba(255,255,255,0.15)",
+              color: "#b8c5d6",
+              fontWeight: 600,
+              fontSize: "1rem",
+              textDecoration: "none",
+              transition: "border-color 0.3s ease, color 0.3s ease, background 0.3s ease",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.borderColor = "rgba(56,189,248,0.5)";
+              e.currentTarget.style.color = "#f1f5f9";
+              e.currentTarget.style.background = "rgba(56,189,248,0.1)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.borderColor = "rgba(255,255,255,0.15)";
+              e.currentTarget.style.color = "#b8c5d6";
+              e.currentTarget.style.background = "rgba(15,25,50,0.6)";
+            }}
+          >
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+            </svg>
+            LinkedIn
+          </a>
+        </div>
+
+        <div className="hero-stats" aria-label="Resultados em destaque" style={{ marginTop: "2rem" }}>
           {renderedStats}
-        </motion.div>
-      </motion.div>
+        </div>
+      </div>
     </header>
   );
 });
