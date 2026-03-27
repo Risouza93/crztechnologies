@@ -11,19 +11,19 @@ const NAV_ITEMS = [
 const Nav = memo(function Nav({ scrollTo }: NavProps) {
   return (
     <nav aria-label="Navegação principal">
-      <ul>
+      <div className="nav-container">
         {NAV_ITEMS.map(({ id, label }) => (
-          <li key={id}>
-            <button
-              type="button"
-              onClick={() => scrollTo(id)}
-              aria-label={`Ir para seção ${label}`}
-            >
-              {label}
-            </button>
-          </li>
+          <button
+            key={id}
+            type="button"
+            className="nav-link"
+            onClick={() => scrollTo(id)}
+            aria-label={`Ir para seção ${label}`}
+          >
+            {label}
+          </button>
         ))}
-      </ul>
+      </div>
     </nav>
   );
 });
