@@ -76,17 +76,6 @@ function App() {
       <TypebotBubble />
     </ThemeProvider>
   );
-  
-  function App() {
-  return (
-    <div className="App">
-      {/* TODO seu código atual */}
-      
-      {/* NOVO: chatbot IA */}
-      <TypebotBubble />
-    </div>
-  );
-}
 }
 
 export default App;
