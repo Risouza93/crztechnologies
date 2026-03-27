@@ -22,7 +22,7 @@ interface ButtonStyle {
 const TypebotBubble: React.FC = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [isHovered, setIsHovered] = useState<boolean>(false);
-  const typebotUrl = "https://typebot.onboarding-jresh.typebot.io";
+  const typebotUrl = "https://typebot.co/user-onboarding-rje58ah";
 
   const getButtonStyle = (hovered: boolean): ButtonStyle => ({
     position: "fixed",
