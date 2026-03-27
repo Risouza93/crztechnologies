@@ -6,7 +6,10 @@ import Sections from "./components/Sections";
 import { useForm } from "./hooks/useForm";
 import { useScrollSpy } from "./hooks/useScrollSpy";
 
-emailjs.init(process.env.REACT_APP_EMAILJS_PUBLIC_KEY!);
+const PUBLIC_KEY = process.env.REACT_APP_EMAILJS_PUBLIC_KEY;
+if (PUBLIC_KEY) {
+  emailjs.init(PUBLIC_KEY);
+}
 
 export default function App() {
   const { form, status, loading, handleChange, handleSubmit } = useForm();
