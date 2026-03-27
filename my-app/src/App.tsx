@@ -8,6 +8,7 @@ import Sections from "./components/Sections";
 import ScrollToTop from "./components/ScrollToTop";
 import CustomCursor from "./components/CustomCursor";
 import Toast from "./components/Toast";
+import TypebotBubble from "./components/TypebotBubble";// <- IMPORT
 
 interface ToastState { message: string; type: string; }
 interface FormState { nome: string; email: string; mensagem: string; }
@@ -70,8 +71,22 @@ function App() {
         handleChange={handleChange}
         handleSubmit={handleSubmit}
       />
+    
+       {/* NOVO: chatbot IA */}
+      <TypebotBubble />
     </ThemeProvider>
   );
+  
+  function App() {
+  return (
+    <div className="App">
+      {/* TODO seu código atual */}
+      
+      {/* NOVO: chatbot IA */}
+      <TypebotBubble />
+    </div>
+  );
+}
 }
 
 export default App;
