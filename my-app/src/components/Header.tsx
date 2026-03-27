@@ -10,7 +10,7 @@ const STATS: string[] = [
 
 const LINKEDIN_URL = "https://www.linkedin.com/in/richard-de-souza-feitosa/";
 
-const Header = memo(function Header({ onScrollContato }: HeaderProps) {
+const Header = memo(function Header({ scrollContato }: HeaderProps) {
 const renderedStats = useMemo(
 () => STATS.map((stat) => <span key={stat}>{stat}</span>),
 []
@@ -69,7 +69,7 @@ Redução de até 40% no tempo de processos
 <button
 type="button"
 className="cta-button"
-onClick={onScrollContato}
+onClick={scrollContato}
 aria-label="Ir para seção de contato"
 >
 <span aria-hidden="true">🚀</span>
