@@ -8,17 +8,18 @@ const NAV_ITEMS = [
   { id: "contato",  label: "Contato"  },
 ] as const;
 
-const Nav = memo(function Nav({ scrollTo }: NavProps) {
+const Nav = memo(function Nav({ scrollTo, activeId }: NavProps) {
   return (
-    <nav aria-label="Navegação principal">
+    <nav aria-label="Navegacao principal">
       <div className="nav-container">
         {NAV_ITEMS.map(({ id, label }) => (
           <button
             key={id}
             type="button"
-            className="nav-link"
+            className={`nav-link${activeId === id ? " active" : ""}`}
             onClick={() => scrollTo(id)}
-            aria-label={`Ir para seção ${label}`}
+            aria-label={`Ir para secao ${label}`}
+            aria-current={activeId === id ? "true" : undefined}
           >
             {label}
           </button>

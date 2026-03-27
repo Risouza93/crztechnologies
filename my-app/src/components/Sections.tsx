@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import Sobre from "./Sobre";
 import Projetos from "./Projetos";
 import Stack from "./Stack";
-import type { SectionsProps } from "../types";
+import type { SectionsProps, ContatoProps } from "../types";
 
 const sectionVariants = {
   hidden: { opacity: 0, y: 60 },
@@ -20,11 +20,7 @@ interface AnimatedSectionProps {
   children: React.ReactNode;
 }
 
-const AnimatedSection = memo(function AnimatedSection({
-  id,
-  label,
-  children,
-}: AnimatedSectionProps) {
+const AnimatedSection = memo(function AnimatedSection({ id, label, children }: AnimatedSectionProps) {
   return (
     <motion.section
       id={id}
@@ -40,12 +36,8 @@ const AnimatedSection = memo(function AnimatedSection({
 });
 
 const Contato = memo(function Contato({
-  form,
-  status,
-  loading,
-  handleChange,
-  handleSubmit,
-}: Omit<SectionsProps, never>) {
+  form, status, loading, handleChange, handleSubmit,
+}: ContatoProps) {
   return (
     <div className="contact-card">
       <h2>Contato</h2>
@@ -66,15 +58,15 @@ const Contato = memo(function Contato({
           rows={5} required
         />
         <button type="submit" className="cta-button" disabled={loading} aria-busy={loading}>
-          {loading ? "Enviando…" : "Enviar mensagem"}
+          {loading ? "Enviando..." : "Enviar mensagem"}
         </button>
-        {status && typeof status === "string" && (
+        {status.tipo !== "idle" && (
           <p
-            className={`status-msg ${status.includes("sucesso") ? "status-msg--sucesso" : "status-msg--erro"}`}
+            className={`status-msg ${status.tipo === "sucesso" ? "status-msg--sucesso" : "status-msg--erro"}`}
             role="alert"
             aria-live="polite"
           >
-            {status}
+            {status.mensagem}
           </p>
         )}
       </form>
@@ -89,12 +81,9 @@ const Sections = memo(function Sections({
     <>
       <AnimatedSection id="sobre"    label="Sobre mim">    <Sobre />    </AnimatedSection>
       <AnimatedSection id="projetos" label="Projetos">     <Projetos /> </AnimatedSection>
-      <AnimatedSection id="stack"    label="Stack técnica"><Stack />    </AnimatedSection>
+      <AnimatedSection id="stack"    label="Stack tecnica"><Stack />    </AnimatedSection>
       <AnimatedSection id="contato"  label="Contato">
-        <Contato
-          form={form} status={status} loading={loading}
-          handleChange={handleChange} handleSubmit={handleSubmit}
-        />
+        <Contato form={form} status={status} loading={loading} handleChange={handleChange} handleSubmit={handleSubmit} />
       </AnimatedSection>
     </>
   );

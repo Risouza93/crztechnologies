@@ -1,4 +1,4 @@
-﻿import { memo } from "react";
+import { memo } from "react";
 
 const LINKEDIN_URL = "https://www.linkedin.com/in/richard-de-souza-feitosa/";
 

@@ -1,4 +1,4 @@
-﻿import emailjs from "@emailjs/browser";
+import emailjs from "@emailjs/browser";
 import "./style.css";
 import Header from "./components/Header";
 import Nav from "./components/Nav";

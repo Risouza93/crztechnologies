@@ -2,28 +2,28 @@ import { useState, useCallback } from "react";
 import emailjs from "@emailjs/browser";
 import type { FormState, StatusState } from "../types";
 
-const FORM_INITIAL_STATE: FormState = {
+const FORM_INITIAL: FormState = {
   nome:     "",
   email:    "",
   mensagem: "",
 };
 
-const STATUS_INITIAL_STATE: StatusState = {
+const STATUS_INITIAL: StatusState = {
   mensagem: "",
   tipo:     "idle",
 };
 
 interface UseFormReturn {
-  form:          FormState;
-  status:        StatusState;
-  loading:       boolean;
-  handleChange:  (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
-  handleSubmit:  (e: React.FormEvent<HTMLFormElement>) => void;
+  form:         FormState;
+  status:       StatusState;
+  loading:      boolean;
+  handleChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+  handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
 }
 
 export function useForm(): UseFormReturn {
-  const [form, setForm]       = useState<FormState>(FORM_INITIAL_STATE);
-  const [status, setStatus]   = useState<StatusState>(STATUS_INITIAL_STATE);
+  const [form, setForm]       = useState<FormState>(FORM_INITIAL);
+  const [status, setStatus]   = useState<StatusState>(STATUS_INITIAL);
   const [loading, setLoading] = useState<boolean>(false);
 
   const handleChange = useCallback(
@@ -47,12 +47,12 @@ export function useForm(): UseFormReturn {
 
       const emailValido = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
       if (!emailValido) {
-        setStatus({ mensagem: "Insira um endereço de e-mail válido.", tipo: "erro" });
+        setStatus({ mensagem: "Insira um endereco de e-mail valido.", tipo: "erro" });
         return;
       }
 
       setLoading(true);
-      setStatus(STATUS_INITIAL_STATE);
+      setStatus(STATUS_INITIAL);
 
       try {
         await emailjs.send(
@@ -62,7 +62,7 @@ export function useForm(): UseFormReturn {
           process.env.REACT_APP_EMAILJS_PUBLIC_KEY!
         );
         setStatus({ mensagem: "Mensagem enviada! Em breve entrarei em contato.", tipo: "sucesso" });
-        setForm(FORM_INITIAL_STATE);
+        setForm(FORM_INITIAL);
       } catch {
         setStatus({ mensagem: "Erro ao enviar. Tente novamente.", tipo: "erro" });
       } finally {
